@@ -1,0 +1,1 @@
+export { getWikiResults } from "./getWikiResults";

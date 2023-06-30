@@ -5,7 +5,7 @@ export const getUser = async (id: string) => {
   const user: Promise<User> = response.json();
 
   if (!response.ok) {
-    throw new Error("Error fetching user");
+    return undefined;
   }
 
   return user;

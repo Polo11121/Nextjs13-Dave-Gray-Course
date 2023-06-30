@@ -1,7 +1,7 @@
 export const UserPosts = async ({
   promisePosts,
 }: {
-  promisePosts: Promise<Post[]>;
+  promisePosts: Promise<Post[] | undefined>;
 }) => {
   const posts = await promisePosts;
 

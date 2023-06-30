@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { getUser, getUserPosts } from "@/lib";
-import { UserPosts } from "@/users/components";
+import { getAllUsers, getUser, getUserPosts } from "@/lib";
+import { UserPosts } from "@/user/components";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 
 type Params = {
@@ -24,6 +25,10 @@ export const generateMetadata = async ({
 const UserPage = async ({ params: { id } }: Params) => {
   const user = await getUser(id);
 
+  if (!user?.name) {
+    notFound();
+  }
+
   const promisePosts = getUserPosts(id);
 
   return (
@@ -44,6 +49,14 @@ const UserPage = async ({ params: { id } }: Params) => {
       <Link href="/users">Go Back</Link>
     </>
   );
+};
+
+export const generateStaticParams = async () => {
+  const users = await getAllUsers();
+
+  return users.map(({ id }) => ({
+    id: id.toString(),
+  }));
 };
 
 export default UserPage;

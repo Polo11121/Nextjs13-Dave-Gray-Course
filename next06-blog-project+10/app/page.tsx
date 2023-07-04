@@ -1,5 +1,7 @@
 import { Posts } from "@/app/components";
 
+export const revalidate = 10;
+
 const HomePage = () => (
   <main className="px-6 mx-auto">
     <p className="mt-12 mb-12 text-3xl text-center dark:text-white">

@@ -2,7 +2,7 @@ import { getFormattedDate } from "@/lib";
 import Link from "next/link";
 
 type Props = {
-  post: Post;
+  post: Meta;
 };
 
 export const Post = ({ post }: Props) => {
